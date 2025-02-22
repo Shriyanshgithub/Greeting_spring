@@ -1,5 +1,6 @@
 package com.capgemini.greeting_spring.dto;
 
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 
 @Component
