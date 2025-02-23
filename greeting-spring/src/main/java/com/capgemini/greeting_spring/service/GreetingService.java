@@ -60,4 +60,7 @@ public class GreetingService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Greeting not found for ID: " + id));
     }
 
+    public void deleteMessage(Long id){
+        greetingRepo.deleteById(id);
+    }
 }

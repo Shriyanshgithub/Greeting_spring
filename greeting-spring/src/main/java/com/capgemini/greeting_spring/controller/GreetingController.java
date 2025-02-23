@@ -94,5 +94,11 @@ public class GreetingController {
         return new ResponseEntity<>(updatedGreeting, HttpStatus.OK);
     }
 
+    //use case 8
+    @DeleteMapping("/deleteMessage/{id}")
+    public void deleteMessage(@PathVariable("id") Long id){
+         greetingService.deleteMessage(id);
+        System.out.println("true");
+    }
 
 }
