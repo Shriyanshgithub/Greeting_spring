@@ -49,4 +49,15 @@ public class GreetingController {
         String message = greetingService.getServiceMessage();
         return new ResponseEntity<>(new Greeting(message),HttpStatus.OK);
     }
+
+    @GetMapping("/hellogreeting/{firstName}/{lastName}")
+     public ResponseEntity<Greeting> getFirstLastName(
+             @PathVariable("firstName") String firstName,
+             @PathVariable("lastName")String lastName){
+
+        String message = greetingService.getGreetingMessage(firstName,lastName);
+        return new ResponseEntity<>(new Greeting(message),HttpStatus.OK);
+    }
+
+
 }
