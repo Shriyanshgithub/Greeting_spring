@@ -72,17 +72,19 @@ public class GreetingController {
         return new ResponseEntity<>(saveMessage,HttpStatus.OK);
     }
 
-    @GetMapping("/getAll")
-    public ResponseEntity<List<GreetingEntity>> getAllGreetingMessage(){
-        List<GreetingEntity> greetingEntities = greetingService.getAll();
-        return new ResponseEntity<>(greetingEntities, HttpStatus.OK);
-    }
 
     //use case 5
     @GetMapping("/getMessage/{id}")
     public ResponseEntity<GreetingEntity> getMessageById(@PathVariable("id") Long id){
         GreetingEntity entity = greetingService.getMessageById(id);
         return new ResponseEntity<>(entity,HttpStatus.OK);
+    }
+
+    //use case 6
+    @GetMapping("/getAll")
+    public ResponseEntity<List<GreetingEntity>> getAllGreetingMessage(){
+        List<GreetingEntity> greetingEntities = greetingService.getAll();
+        return new ResponseEntity<>(greetingEntities, HttpStatus.OK);
     }
 
 }
