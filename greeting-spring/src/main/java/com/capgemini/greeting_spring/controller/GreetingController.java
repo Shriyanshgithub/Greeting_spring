@@ -78,5 +78,11 @@ public class GreetingController {
         return new ResponseEntity<>(greetingEntities, HttpStatus.OK);
     }
 
+    //use case 5
+    @GetMapping("/getMessage/{id}")
+    public ResponseEntity<GreetingEntity> getMessageById(@PathVariable("id") Long id){
+        GreetingEntity entity = greetingService.getMessageById(id);
+        return new ResponseEntity<>(entity,HttpStatus.OK);
+    }
 
 }

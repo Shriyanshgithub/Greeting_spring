@@ -44,4 +44,8 @@ public class GreetingService {
     public List<GreetingEntity> getAll(){
         return greetingRepo.findAll();
     }
+
+    public GreetingEntity getMessageById(Long id){
+        return greetingRepo.findById(id).orElseThrow(() -> new RuntimeException("Greeting not found for ID: " + id));
+    }
 }
