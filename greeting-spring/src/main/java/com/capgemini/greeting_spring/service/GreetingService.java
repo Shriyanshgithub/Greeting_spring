@@ -3,7 +3,9 @@ package com.capgemini.greeting_spring.service;
 import com.capgemini.greeting_spring.entity.GreetingEntity;
 import com.capgemini.greeting_spring.repository.GreetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.swing.*;
 import java.util.List;
@@ -48,4 +50,14 @@ public class GreetingService {
     public GreetingEntity getMessageById(Long id){
         return greetingRepo.findById(id).orElseThrow(() -> new RuntimeException("Greeting not found for ID: " + id));
     }
+
+    public GreetingEntity updateGreeting(Long id, String newMessage) {
+        return greetingRepo.findById(id)
+                .map(existingGreeting -> {
+                    existingGreeting.setMessage(newMessage);
+                    return greetingRepo.save(existingGreeting);
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Greeting not found for ID: " + id));
+    }
+
 }

@@ -87,4 +87,12 @@ public class GreetingController {
         return new ResponseEntity<>(greetingEntities, HttpStatus.OK);
     }
 
+    //use case 7
+    @PutMapping("/update/{id}")
+    public ResponseEntity<GreetingEntity> updateGreeting(@PathVariable("id") Long id, @RequestParam("message") String message) {
+        GreetingEntity updatedGreeting = greetingService.updateGreeting(id, message);
+        return new ResponseEntity<>(updatedGreeting, HttpStatus.OK);
+    }
+
+
 }
